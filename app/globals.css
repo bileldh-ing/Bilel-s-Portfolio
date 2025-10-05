@@ -1,0 +1,329 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+
+    --radius: 0.5rem;
+  }
+
+/* Footer icon-only social links (hover-expand) */
+.social-links, .flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.social-btn {
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+  box-shadow: 0 10px 10px rgba(0,0,0,0.15);
+  background: #ffffff;
+  margin: 5px;
+  transition: width 0.3s ease, border-radius 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.social-btn img {
+  height: 24px;
+  width: 24px;
+}
+
+.social-btn span {
+  width: 0;
+  overflow: hidden;
+  transition: width 0.3s ease, padding 0.3s ease;
+  text-align: center;
+  margin-left: 6px;
+  color: #111827; /* slate-900 */
+  font-size: 12px;
+}
+
+.social-btn:hover {
+  width: 150px;
+  border-radius: 8px;
+}
+
+.social-btn:hover span {
+  padding: 2px;
+  width: 80px;
+}
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border !scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  button {
+    @apply active:outline-none;
+  }
+}
+
+@layer utilities {
+  .heading {
+    @apply font-bold text-4xl md:text-5xl text-center;
+  }
+}
+
+@layer components {
+
+  /* layout helpers (used by Contact section) */
+  .c-space {
+    @apply px-5 sm:px-10;
+  }
+
+  .head-text {
+    @apply font-bold text-4xl md:text-5xl text-white text-left;
+  }
+
+  /* contact section */
+  .contact-container {
+    @apply max-w-xl relative z-10 sm:px-10 px-5 mt-12;
+  }
+
+  .field-label {
+    @apply text-lg text-white-600;
+  }
+
+  .field-input {
+    @apply w-full bg-black-300 px-5 py-2 min-h-14 rounded-lg placeholder:text-white-500 text-lg text-white-800 shadow-black-200 shadow-2xl focus:outline-none;
+  }
+
+  .field-btn {
+    @apply bg-black-500 px-5 py-2 min-h-12 rounded-lg shadow-black-200 shadow-2xl flex justify-center items-center text-lg text-white gap-3;
+  }
+
+  .field-btn_arrow {
+    @apply w-2.5 h-2.5 object-contain invert brightness-0;
+  }
+}
+
+/* Animated Resume Button styles (used in MoreProjects) */
+.btn-container {
+  width: 200px;
+  height: 60px;
+  position: relative;
+  overflow: visible;
+}
+
+.btn-container::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 20px;
+  z-index: -1;
+  background: linear-gradient(80deg, #ffcbf2, #ec38bc, #7303c0, #03001e);
+  filter: blur(20px);
+  opacity: 0;
+}
+
+.btn-container:hover {
+  transform: scale(1.1);
+  transition: all 0.6s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+.btn-container:hover:after {
+  transition: all 0.6s cubic-bezier(0.15, 0.83, 0.66, 1);
+  opacity: 1;
+}
+
+.btn-container:active {
+  transform: scale(1);
+}
+
+.btn-container:active:after {
+  opacity: 0;
+}
+
+button#space-btn {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border: 0;
+  outline: 0;
+  border-radius: 11px;
+  background: linear-gradient(80deg, #ffcbf2, #ec38bc, #7303c0, #03001e);
+  cursor: pointer;
+}
+
+button#space-btn span {
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+button#space-btn div.star {
+  width: 1px;
+  height: 1px;
+  background-color: white;
+  border-radius: 50%;
+  animation: blink 2s cubic-bezier(0.15, 0.83, 0.66, 1) infinite;
+}
+
+button#space-btn div.shooting-star {
+  width: 80px;
+  height: 1px;
+  position: absolute;
+  background: linear-gradient(80deg, #ffffffff, #ffffff00);
+  border-radius: 50%;
+  transform: rotate(-40deg);
+  opacity: 0;
+}
+
+button#space-btn div.shooting-star-1 {
+  animation: fallingStar1 4s 6s cubic-bezier(0.15, 0.83, 0.66, 1) infinite;
+}
+
+button#space-btn div.shooting-star-2 {
+  animation: fallingStar2 2s 10s cubic-bezier(0.15, 0.83, 0.66, 1) infinite;
+}
+
+button#space-btn div.shooting-star-3 {
+  animation: fallingStar3 8s 20s cubic-bezier(0.15, 0.83, 0.66, 1) infinite;
+}
+
+button#space-btn div.shooting-star-4 {
+  animation: fallingStar4 4s 6s cubic-bezier(0.15, 0.83, 0.66, 1) infinite;
+}
+
+@keyframes blink {
+  0% {
+    box-shadow: 0 0 10px 0 white;
+  }
+
+  50% {
+    box-shadow: 0 0 10px 2px white;
+  }
+
+  100% {
+    box-shadow: 0 0 10px 0 white;
+  }
+}
+
+@keyframes fallingStar1 {
+  0% {
+    top: -10px;
+    left: 220px;
+    opacity: 1;
+  }
+
+  100% {
+    top: 200px;
+    left: -20px;
+    opacity: 1;
+  }
+}
+
+@keyframes fallingStar2 {
+  0% {
+    top: -10px;
+    left: 150px;
+    opacity: 1;
+  }
+
+  100% {
+    top: 200px;
+    left: -90px;
+    opacity: 1;
+  }
+}
+
+@keyframes fallingStar3 {
+  0% {
+    top: -10px;
+    left: 80px;
+    opacity: 1;
+  }
+
+  100% {
+    top: 200px;
+    left: -160px;
+    opacity: 1;
+  }
+}
+
+@keyframes fallingStar4 {
+  0% {
+    top: -10px;
+    left: 0px;
+    opacity: 1;
+  }
+
+  100% {
+    top: 200px;
+    left: -240px;
+    opacity: 1;
+  }
+}
